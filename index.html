@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />-->
+
+        <link rel="stylesheet" type="text/css" href="lib/jquery.mobile-1.3.2/jquery.mobile-1.3.2.css" />
+        <script type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>
+        <title>DIBAM</title>
+    </head>
+    <body>
+
+        <!-- Pagina Login -->
+        <div data-role="page" id="login">
+            <div data-role="content">
+                <center><img src="style/img/logo_snbp.jpg"></center>
+                <form action="" id="formLogin" method="POST" lang="es">
+                    <label for="basic">Usuario:</label><br />
+                    <input type="text" name="argUsuario" id="username" value="" placeholder="Usuario"/><br /><br />
+                    <label for="basic">Contraseña:</label><br />
+                    <input type="password" name="argClave" id="pass" value="" placeholder="Contraseña"/>
+                    <center>
+                        <input type="button" value="INGRESAR" id="logear" data-inline="true"/>
+                    </center>
+                </form>
+                <center><img src="style/img/logo_dibam.jpg"></center>    
+            </div>                
+        </div>
+        <!-- Fin Pagina Login -->
+
+        <!-- Pagina Home -->
+        <div data-role="page" id="inicio">                
+            <div data-role="header" data-position="fixed">
+                <img src="style/img/barra_superior.jpg" width="100%">
+                <h1>Home</h1>
+            </div>
+            <div data-role="content" style="padding: 0px;">
+                <div class="divResumen"></div> 
+                <ul data-role="listview" style="margin:0px;" >
+                    <li>
+                        <a href="" id="scan">
+                            <img src="style/img/icons/nuevaSolicitud.png" alt="Nueva Solicitud">
+                            <p class="ui-li-desc-menu">Nueva Solicitud</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" id="solicitudesPorEnviar">
+                            <img src="style/img/icons/solPorEnviar.png">
+                            <p class="ui-li-desc-menu">Libros por enviar</p>
+                            <!-- <p class="ui-li-desc-menu">Solicitud por enviar</p> -->
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" id="solicitudesEnviadas">
+                            <img src="style/img/icons/solEnviadas.png">
+                            <p class="ui-li-desc-menu">Solicitudes enviadas</p>
+                        </a>
+                    </li>
+                </ul>       
+            </div>
+            <div data-role="footer" data-position="fixed"  data-theme="a">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="#login" data-icon="back">Salir</a></li>
+                        <li><a href="#inicio" data-icon="home">Home</a></li>
+                        <li><a href="#contactenosPag" data-icon="grid">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Fin Pagina Home -->
+
+        <!-- Pagina Nueva Solicitud -->
+        <div data-role="page" id="newSolicitudPag">
+            <div data-role="header" data-position="fixed">
+                <img src="style/img/barra_superior.jpg" width="100%">
+                <h1>Nueva Solicitud</h1>
+            </div>
+            <div data-role="content">   
+                <form action="" method="get" lang="es" id="formLibroNuevo">
+                    <!-- <label for="basic">ISBN:</label>
+                    <input type="text" name="isbn" id="isbn" value="" placeholder="ISBN"/><br /> -->
+                    <fieldset class="ui-grid-a">
+                        <div class="ui-block-a" style="width:90%;">
+                            <label for="isbn">ISBN:</label>
+                            <input type="text" name="isbn" id="isbn" value="" placeholder="ISBN"/><br />
+                        </div>
+                        <div class="ui-block-b" style="width:9%;">
+                            <a data-role="button" data-icon="search" data-iconpos="notext" onClick="app.buscarNotScann()" style="margin-top: 35px;">Buscar</a>
+                        </div>     
+                    </fieldset>
+                    
+                    <label for="basic">Titulo:</label>
+                    <input type="text" name="titulo" id="titulo" value="" placeholder="Titulo"/><br />
+                    
+                    <label for="basic">Autor:</label>
+                    <input type="text" name="autor" id="autor" value="" placeholder="Autor"/><br />
+                    
+                    <label for="basic">Valor:</label>
+                    <input type="number" name="precioReferencia" id="precioReferencia" value="" placeholder="Valor"/><br />
+                    
+                    <label for="slider-mini">Cantidad de Libros:</label>
+                    <input type="number" name="cantidad" id="cantidad" value="0" min="0" max="200" placeholder="Cantidad" onchange="app.actualizaTotal(this.value, 'precioReferencia', 'totalPresupuesto')" /><br />
+                                       
+                    <label for="basic" style="float:right;">Total: <span id="totalPresupuesto"></span></label><br /><br />
+                                            
+                    <div data-role="navbar" data-iconpos="top">
+                        <ul>
+                            <li><a href="" data-icon="check" id="guardarLibro">Guardar</a></li>
+                        </ul>
+                        <br />
+                    </div>
+                </form>                    
+            </div>
+            <div data-role="footer" data-position="fixed" class="ui-bar-a-footer">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="" data-rel="back" data-icon="back">Volver</a></li>
+                        <li><a href="#inicio" data-icon="home">Home</a></li>
+                        <li><a href="#contactenosPag" data-icon="grid">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Fin Pagina Nueva Solicitud -->
+
+        <!-- Pagina Solicitudes por Enviar-->
+        <div data-role="page" id="solicitudesPorEnviarPag">
+            <div data-role="header" data-position="fixed">
+                <img src="style/img/barra_superior.jpg" width="100%">
+                <h1>Libros por enviar</h1>
+            </div>
+            <div data-role="content" style="padding: 0px;">   
+                <div class="divResumen"></div>      
+                <form action="" method="get" lang="es" id="formListaSolPorEnviar">
+                    <ul id="listadoSolicitudesPorEnviar" data-role="listview" data-split-icon="edit" data-split-theme="d" data-inset="true"></ul>
+                </form>
+                <center>
+                    <a data-role="button" data-inline="true" id="enviarSolicitud">Enviar</a>
+                </center>
+            </div>
+            <div data-role="footer" data-position="fixed" class="ui-bar-a-footer">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="#inicio" data-rel="back" data-icon="back">Volver</a></li>
+                        <li><a href="#inicio" data-icon="home">Home</a></li>
+                        <li><a href="#contactenosPag" data-icon="grid">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Fin Pagina Solicitudes por Enviar-->
+
+        <!-- Pagina Solicitudes Enviadas-->
+        <div data-role="page" id="solicitudesEnviadasPag">
+            <div data-role="header" data-position="fixed">
+                <img src="style/img/barra_superior.jpg" width="100%">
+                <h1>Solicitudes enviadas</h1>
+            </div>
+            <div data-role="content"> 
+                <p>Seleccione: </p>  
+                <ul id="listSolEnviadas" data-role="listview" data-inset="true"></ul>
+            </div>
+            <div data-role="footer" data-position="fixed" class="ui-bar-a-footer">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="#inicio" data-rel="back" data-icon="back">Volver</a></li>
+                        <li><a href="#inicio" data-icon="home">Home</a></li>
+                        <li><a href="#contactenosPag" data-icon="grid">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Fin Pagina Solicitudes Enviadas-->
+
+        <!-- Pagina Detalle Solicitudes Enviadas-->
+        <div data-role="page" id="detalleSolicitud">
+            <div data-role="header" data-position="fixed">
+                <img src="style/img/barra_superior.jpg" width="100%">
+                <h1>Detalle Solicitud</h1>
+            </div>
+            <div data-role="content">
+                <div id="tablaSolPorEnviar"></div>
+            </div>
+            <div data-role="footer" data-position="fixed" class="ui-bar-a-footer">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="" data-rel="back" data-icon="back">Volver</a></li>
+                        <li><a href="#inicio" data-icon="home">Home</a></li>
+                        <li><a href="#contactenosPag" data-icon="grid">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Fin Pagina Detalle Solicitudes Enviadas-->
+
+        <!-- Pagina Libros Solicitudes Enviadas-->
+        <div data-role="page" id="librosEnviadosPag">
+            <div data-role="header" data-position="fixed">
+                <img src="style/img/barra_superior.jpg" width="100%">
+                <h1>Libros enviados</h1>
+            </div>
+            <div data-role="content" style="padding: 0px;">   
+                <!-- <div class="divResumen" ></div> -->      
+                <div>
+                    <ol id="librosSolicitudesEnviadas" data-role="listview" read-only="true" data-inset="true" style="margin: 40px 15px 0px 15px;"></ol>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" class="ui-bar-a-footer">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="" data-rel="back" data-icon="back">Volver</a></li>
+                        <li><a href="#inicio" data-icon="home">Home</a></li>
+                        <li><a href="#contactenosPag" data-icon="grid">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Fin Libros Solicitudes Enviadas-->
+
+        <!-- Pagina Editar Solicitud -->
+        <div data-role="page" id="editarSolicitudPag">
+            <div data-role="header" data-position="fixed">
+                <img src="style/img/barra_superior.jpg" width="100%">
+                <h1>Editar Solicitud</h1>
+            </div>
+            <div data-role="content">   
+                <form action="" method="get" lang="es" id="formLibroEditar">
+                    <label for="basic">ISBN:</label>
+                    <input type="text" name="isbnE" id="isbnE" value="" placeholder="ISBN" disabled="disabled" /><br />
+                    
+                    <label for="basic">Titulo:</label>
+                    <input type="text" name="tituloE" id="tituloE" value="" placeholder="Titulo"/><br />
+                    
+                    <label for="basic">Autor:</label>
+                    <input type="text" name="autorE" id="autorE" value="" placeholder="Autor"/><br />
+                    
+                    <label for="basic">Valor:</label>
+                    <input type="number" name="precioReferenciaE" id="precioReferenciaE" value="" placeholder="Valor"/><br />
+                    
+                    <label for="slider-mini">Cantidad de Libros:</label>
+                    <input type="number" name="cantidadE" id="cantidadE" value="" min="0" max="200" placeholder="Cantidad" onchange="app.actualizaTotal(this.value, 'precioReferenciaE', 'totalPresupuestoE')" /><br />
+                                       
+                    <label for="basic" style="float:right;">Total: <span id="totalPresupuestoE"></span></label><br /><br />
+                    
+                    <input type="hidden" name="idLibro" id="idLibro" value=""/>
+                                            
+                    <div data-role="navbar" data-iconpos="top">
+                        <ul>
+                            <li><a href="" data-icon="delete" id="eliminarLibro">Eliminar</a></li>
+                            <li><a href="" data-icon="check" id="modificarLibro">Modificar</a></li>
+                        </ul>
+                    </div>
+                </form>                    
+            </div>
+            <div data-role="footer" data-position="fixed" class="ui-bar-a-footer">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="" data-rel="back" data-icon="back">Volver</a></li>
+                        <li><a href="#inicio" data-icon="home">Home</a></li>
+                        <li><a href="#contactenosPag" data-icon="grid">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Fin Pagina Editar Solicitud -->
+
+        <!-- Pagina Contactenos-->
+        <div data-role="page" id="contactenosPag">
+            <div data-role="header" data-position="fixed">
+                <img src="style/img/barra_superior.jpg" width="100%">
+                <h1>Cont&aacute;ctenos</h1>
+            </div>
+            <div data-role="content" style="padding: 0px;">
+                <div data-role="fieldcontain" style="margin: 40px 15px 0px 15px;">
+                    <label for="mensajeContacto">Mensaje:</label>
+                    <textarea name="mensajeContacto" cols="40" rows="8" id="mensajeContacto" placeholder="Ingrerse su mensaje."></textarea>
+                    <center><a data-role="button" onClick="app.contactenos()" data-inline="true" data-icon="check">Enviar</a></center>
+                
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" class="ui-bar-a-footer">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="" data-rel="back" data-icon="back">Volver</a></li>
+                        <li><a href="#inicio" data-icon="home">Home</a></li>
+                        <li><a href="#contactenosPag" data-icon="grid">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Fin Libros Solicitudes Enviadas-->
+
+        <!-- Inicio Dialogo Error-->
+        <div class="ui-popup-container pop ui-popup-hidden" id="popupDialog-popup">
+            <div data-role="popup" id="popupDialog" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all ui-popup ui-body-c ui-overlay-shadow">
+                <div data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a" role="banner">
+                    <h1 class="ui-title" role="heading" aria-level="1" id="tituloError" ></h1>
+                </div>
+                <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content ui-body-d" role="main">
+                    <center>
+                        <h3 class="ui-title" id="tituloError"></h3>
+                    
+                        <a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-b"><span class="ui-btn-inner"><span class="ui-btn-text">Aceptar</span></span></a> 
+                    </center>
+                </div>
+            </div>
+        </div>
+        <!-- Fin Dialogo error-->
+
+        <!-- Inicio Dialogo Error-->
+        <div class="ui-popup-container pop ui-popup-hidden" id="confirm-dialog-popup">
+            <div data-role="popup" id="confirm-dialog" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all ui-popup ui-body-c ui-overlay-shadow">
+                <div data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a" role="banner">
+                    <h1 class="ui-title" role="heading" aria-level="1" id="tituloError" ></h1>
+                </div>
+                <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content ui-body-d" role="main">
+                    <center>
+                        <h3 class="ui-title" id="tituloError"></h3>                        
+
+                        <a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-d"><span class="ui-btn-inner"><span class="ui-btn-text">Cancelar</span></span></a> 
+
+                        <a data-role="button" data-inline="true" onclick="app.enviarSolicitud()" data-transition="flow" data-theme="b" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-b"><span class="ui-btn-inner"><span class="ui-btn-text">OK</span></span></a>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <!-- Fin Dialogo error-->
+
+        <!--<script src="lib/cordova.js"></script>-->
+        <script src="cordova.js"></script> 
+        <script src="barcodescanner.js"></script>
+        <!--<script type="text/javascript" src="childbrowser.js"></script>-->
+        <script type="text/javascript" src="controller/controller.js"></script>
+        <script type="text/javascript" src="controller/db_manager.js"></script>
+        <script type="text/javascript">
+           app.initialize();
+            
+        </script>
+    </body>
+</html>

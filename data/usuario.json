@@ -1,0 +1,17 @@
+{
+	"model" : {
+		"usuario" : "uno",
+		"pass" : 123,
+		"codigoUsuario": 1,
+		"presupuestos" : {
+			"id" : 1,
+			"nombrePresupuesto" : "F. Internacional de Santiago",
+			"totalPresupuesto" : 1000000,
+			"disponiblePresupuesto": 1000000,
+			"utilizado": 0,
+			"fechaValidoHasta": "2013/08/23"
+		}
+
+	},
+	"success" : true
+}

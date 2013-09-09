@@ -1,0 +1,29 @@
+{
+	"model" : [{
+		"isbn" : 9789568410578,
+		"titulo" : "Steve Jobs, La Biografía Exclusiva Del Fundador De Apple",
+		"autor" : "Walter Isaacson",
+		"precioReferencia" : "19.000"
+	},{
+		"isbn" : 9788479534455,
+		"titulo" : "Quien Se Ha Llevado Mi Queso: Como Adaptarnos a Un Mundo En Constante Cambio",
+		"autor" : "Johnson Spencer",
+		"precioReferencia" : "9.520"
+	},{
+		"isbn" : 9789505156016,
+		"titulo" : "Mafalda 1",
+		"autor" : "Quino",
+		"precioReferencia" : "5.500"
+	},{
+		"isbn" : 9789583001031,
+		"titulo" : "Viaje al centro de la tierra",
+		"autor" : "Julio Verne",
+		"precioReferencia" : "7.390"
+	},{
+		"isbn" : 9789583001030,
+		"titulo" : "Viaje al centro de la tierra Dos",
+		"autor" : "Julio Verne",
+		"precioReferencia" : "7.390"
+	}],
+	"success" : "true"
+}

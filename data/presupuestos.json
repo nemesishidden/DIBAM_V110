@@ -1,0 +1,19 @@
+{
+	"model" : [{
+		"nombrePresupuesto" : "F. Internacional de Santiago",
+		"toalPresupuesto" : 1000000,
+		"disponiblePresupuesto": 800000,
+		"utilizado": 200000
+	},{
+		"nombrePresupuesto" : "F. del Libro Infantil",
+		"toalPresupuesto" : 1000000,
+		"disponiblePresupuesto": 800000,
+		"utilizado": 200000
+	},{
+		"nombrePresupuesto" : "F. Libro Estacion Mapocho",
+		"toalPresupuesto" : 1000000,
+		"disponiblePresupuesto": 800000,
+		"utilizado": 200000	
+	}],
+	"success" : "true"
+}
